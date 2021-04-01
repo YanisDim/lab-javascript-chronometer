@@ -8,8 +8,8 @@ class Chronometer {
     // ... your code goes here
     this.intervalId = setInterval(()=>{
       this.currentTime++
-
-      //callback()
+      callback()
+      
     }, 1000)
   }
   getMinutes() {
@@ -42,6 +42,16 @@ class Chronometer {
     // ... your code goes here
     let min = this.getMinutes();
     let sec = this.getSeconds();
-    return `${min}:${sec}`
-  }
+    
+    if (min < 10 && sec < 10){
+      return `0${min}:0${sec}`
+    } else if (min < 10 && sec > 10){
+      return `0${min}:${sec}`
+    } else if (min > 10 && sec < 10 ){
+      return `${min}:0${sec}`
+    }else{
+      return `${min}:${sec}`
+    }
+  
+}
 }
